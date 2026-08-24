@@ -1,20 +1,16 @@
 #!/usr/bin/env bash
-set -euo pipefail
+set -euo
 
-REPO_DIR="/opt/github-counter"
-GIT_SSH_COMMAND="ssh -i ~/.ssh/id_repo_deploy -o IdentitiesOnly=yes"
+cd /root/github-counter
 
-cd "$REPO_DIR"
+git pull origin main --rebase
 
-# Synchronizacja przed zmianami
-GIT_SSH_COMMAND="$GIT_SSH_COMMAND" git pull --rebase origin main
+# 2. Uruchomienie skryptu Pythona
+python3 main.py
 
-# Wykonanie skryptu
-/usr/bin/python3 increment.py
-
-# Zatwierdzenie i wysłanie
+# 3. Commit i push
 git add counter.txt
 if ! git diff --staged --quiet; then
-  git commit -m "counter"
-  GIT_SSH_COMMAND="$GIT_SSH_COMMAND" git push origin main
+  git commit -m "github counter"
+  git push origin main
 fi
