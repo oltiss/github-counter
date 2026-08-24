@@ -1,6 +1,8 @@
 import subprocess
 import sys
 from pathlib import Path
+import random
+import time
 
 # Ustalenie ścieżki do folderu z projektem
 BASE_DIR = Path(__file__).resolve().parent
@@ -51,6 +53,16 @@ def git_sync_and_push(count: int):
         print(f"Błąd operacji Git: {e.stderr.strip()}", file=sys.stderr)
         sys.exit(1)
 
+def main():
+    x = random.randint(1, 5)
+
+    for i in range(x):
+        new_count = increment_counter()
+        git_sync_and_push(new_count)
+        time.sleep(10)
+
+
+
+
 if __name__ == "__main__":
-    new_count = increment_counter()
-    git_sync_and_push(new_count)
+    main()
