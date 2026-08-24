@@ -30,10 +30,7 @@ def increment_counter() -> int:
 
 def git_sync_and_push(count: int):
     try:
-        # 1. Pobranie ewentualnych zmian zdalnych
-        run_cmd(["git", "pull", "origin", "main", "--rebase"])
 
-        # 2. Stage'owanie pliku licznika
         run_cmd(["git", "add", "counter.txt"])
 
         # 3. Sprawdzenie, czy są zmiany do zatwierdzenia
