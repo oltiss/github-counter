@@ -41,7 +41,7 @@ def git_sync_and_push(count: int):
 
         # Kod 1 oznacza, że wystąpiły zmiany do commitowania
         if diff_check.returncode == 1:
-            run_cmd(["git", "commit", "-m", f"chore: increment counter to {count} [skip ci]"])
+            run_cmd(["git", "commit", "-m", "commit nr {count}"])
             run_cmd(["git", "push", "origin", "main"])
             print(f"Pomyślnie zaktualizowano licznik do {count} i wykonano git push.")
         else:
