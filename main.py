@@ -54,7 +54,7 @@ def git_sync_and_push(count: int):
         sys.exit(1)
 
 def main():
-    x = random.randint(1, 5)
+    x = random.randint(1, 15)
 
     for i in range(x):
         new_count = increment_counter()
